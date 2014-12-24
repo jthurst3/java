@@ -29,8 +29,8 @@ public class Basic {
 	 * December 23, 2014
 	 * @param line The line to print
 	 */
-	public static void print(String line) {
-		System.out.print(line);
+	public static void print(Object line) {
+		System.out.print(line.toString());
 	}
 	/**
 	 * Simple print line function
@@ -39,8 +39,8 @@ public class Basic {
 	 * December 23, 2014
 	 * @param line The line to print
 	 */
-	public static void println(String line) {
-		System.out.println(line);
+	public static void println(Object line) {
+		System.out.println(line.toString());
 	}
 	/**
 	 * Sum function
