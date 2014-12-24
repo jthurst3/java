@@ -13,3 +13,14 @@ echo "export CLASSPATH=$CLASSPATH:/path/to/this/folder/doc/hassler.jar" >> .bash
 ant
 ```
 
+Example usage:
+```
+import hassler.Basic;
+
+public class HasslerTest {
+	public static void main(String[] args) {
+		Basic.hello_world();
+	}
+}
+```
+
