@@ -15,11 +15,13 @@ ant
 
 Example usage:
 ```
-import hassler.Basic;
+import static hassler.Basic.hello_world;
+import static hassler.Basic.println;
 
 public class HasslerTest {
 	public static void main(String[] args) {
-		Basic.hello_world();
+		hello_world();
+		println("Hello, world!");
 	}
 }
 ```
