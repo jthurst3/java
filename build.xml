@@ -23,6 +23,12 @@
         </javac>
     </target>
 
+    <!-- Generate javadocs for current project into ${doc.dir} -->
+    <!-- from http://stackoverflow.com/questions/1495982/how-to-generate-javadoc-with-ant-for-an-existing-project -->
+    <target name="doc" description="generate documentation">
+      <javadoc sourcepath="${src}" destdir="${docdir}"/>
+    </target>
+
     <target name="jar" depends="compile">
         <copy todir="${builddir}" preservelastmodified="true">
             <fileset dir="${src}" includes="*.properties" />
