@@ -13,7 +13,7 @@ public class Basic {
 	 * @author J. Hassler Thurston
 	 * @date December 23, 2014
 	*/
-	public void hello_world() {
+	public static void hello_world() {
 		println("Hello, world!");
 	}
 
@@ -24,7 +24,7 @@ public class Basic {
 	 * @author J. Hassler Thurston
 	 * December 23, 2014
 	 */
-	public void print(String line) {
+	public static void print(String line) {
 		System.out.print(line);
 	}
 	/**
@@ -33,7 +33,7 @@ public class Basic {
 	 * @author J. Hassler Thurston
 	 * December 23, 2014
 	 */
-	public void println(String line) {
+	public static void println(String line) {
 		System.out.println(line);
 	}
 	/**
@@ -42,7 +42,7 @@ public class Basic {
 	 * @author J. Hassler Thurston
 	 * December 23, 2014
 	 */
-	public int sum(int[] arr) {
+	public static int sum(int[] arr) {
 		int total = 0;
 		for (int i = 0; i < arr.length; i++) {
 			total += arr[i];
@@ -55,7 +55,7 @@ public class Basic {
 	 * @author J. Hassler Thurston
 	 * December 23, 2014
 	 */
-	public int max(int[] arr) {
+	public static int max(int[] arr) {
 		int currentMax = Integer.MIN_VALUE;
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] > currentMax) {
@@ -70,7 +70,7 @@ public class Basic {
 	 * @author J. Hassler Thurston
 	 * December 23, 2014
 	 */
-	public int min(int[] arr) {
+	public static int min(int[] arr) {
 		int currentMin = Integer.MAX_VALUE;
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] < currentMin) {
@@ -86,7 +86,7 @@ public class Basic {
 	 * @author J. Hassler Thurston
 	 * December 23, 2014
 	 */
-	public int k_select(int[] arr) {
+	public static int k_select(int[] arr) {
 		// pick an element randomly as the pivot
 		// stub
 		return 0;
