@@ -1,5 +1,5 @@
 <!-- Modified from Coursera's Data Science course -->
-<project name="hassler" default="jar" basedir=".">
+<project name="hassler" default="test" basedir=".">
     <!-- properties -->
     <property name="builddir"      location="./bin" />
     <property name="docdir"      location="./doc" />
@@ -19,7 +19,7 @@
         <javac
             target="1.8" 
             srcdir="${src}" destdir="${builddir}"
-            includeAntRuntime="false"
+            includeAntRuntime="true"
             classpathref="lib.path.ref" debug="true">
             <include name="**/*.java" />
         </javac>
@@ -31,7 +31,7 @@
       <javadoc sourcepath="${src}" destdir="${docdir}"/>
     </target>
 
-    <target name="jar" depends="compile, test">
+    <target name="jar" depends="compile">
         <copy todir="${builddir}" preservelastmodified="true">
             <fileset dir="${src}" includes="*.properties" />
         </copy>
@@ -41,15 +41,36 @@
         </jar>
     </target>
 
+    <target name="testcompile">
+        <!-- <mkdir dir="${builddir}"/> -->
+        <javac
+            target="1.8" 
+            srcdir="${testdir}" destdir="${testdir}"
+            includeAntRuntime="true"
+            classpathref="lib.path.ref" debug="true">
+            <include name="**/*.java" />
+        </javac>
+    </target>
+
     <!-- from http://cs.lmu.edu/~ray/notes/unittesting/ -->
-    <target name="test" depends="compile"
+    <target name="test" depends="jar, testcompile"
         description="Runs all unit tests">
-        <junit printSummary="true"
-            haltOnFailure="true"
-            fork="true">
-            <batchtest todir="${testdir}">
-                <fileset dir="${testoutdir}">
-                    <include name="**/*Test.java" />
+        <junit printsummary="yes" haltonfailure="yes">
+            <classpath>
+                <pathelement location="${testdir}"/>
+                <pathelement path="${src}"/>
+            </classpath>
+
+            <formatter type="plain"/>
+
+            <!-- <test name="BasicTest" haltonfailure="no" outfile="result">
+                <formatter type="xml"/>
+            </test> -->
+
+            <batchtest fork="yes" todir="${testoutdir}">
+                <fileset dir="${testdir}">
+                <include name="**/*Test.java"/>
+                    <exclude name="**/Tests.java"/>
                 </fileset>
             </batchtest>
         </junit>
@@ -58,6 +79,11 @@
     <target name="clean">
         <delete dir="${builddir}" />
         <delete file="${jarfile}" />
+        <delete>
+            <fileset dir="${testdir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
     </target>
 
 </project>
