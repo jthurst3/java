@@ -6,6 +6,8 @@
     <property name="src" location="./src" />
     <property name="jardirectory" location="./lib" />
     <property name="jarfile" value="hassler.jar" />
+    <property name="testdir" value="./test" />
+    <property name="testoutdir" value="./out" />
 
     <path id="lib.path.ref">
         <pathelement location="${builddir}" />
@@ -29,7 +31,7 @@
       <javadoc sourcepath="${src}" destdir="${docdir}"/>
     </target>
 
-    <target name="jar" depends="compile">
+    <target name="jar" depends="compile, test">
         <copy todir="${builddir}" preservelastmodified="true">
             <fileset dir="${src}" includes="*.properties" />
         </copy>
@@ -37,6 +39,20 @@
             <fileset dir="${builddir}" includes="**/*.class" />
             <fileset dir="${builddir}" includes="**/*.properties" />
         </jar>
+    </target>
+
+    <!-- from http://cs.lmu.edu/~ray/notes/unittesting/ -->
+    <target name="test" depends="compile"
+        description="Runs all unit tests">
+        <junit printSummary="true"
+            haltOnFailure="true"
+            fork="true">
+            <batchtest todir="${testdir}">
+                <fileset dir="${testoutdir}">
+                    <include name="**/*Test.java" />
+                </fileset>
+            </batchtest>
+        </junit>
     </target>
 
     <target name="clean">
