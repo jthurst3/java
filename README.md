@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/jthurst3/java.png)](https://travis-ci.org/jthurst3/java)
+
+
 java
 ====
 
