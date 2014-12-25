@@ -10,6 +10,7 @@
 
 // JUnit imports
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -65,5 +66,27 @@ public class BasicTest {
 	@Test
 	public void test_k_select() {
 
+	}
+
+	@Test
+	public void test_combine() {
+		// combining an empty 2D array should return the empty array
+		int[][] arr1 = new int[][] {};
+		assertArrayEquals(new int[] {}, Basic.combine(arr1));
+		// combining a 2D array with one element should return a 1-element array
+		int[][] arr2 = new int[][] {new int[] {5}};
+		assertArrayEquals(new int[] {5}, Basic.combine(arr2));
+		// combining a 2D array with one row should return that row
+		int[][] arr3 = new int[][] {new int[] {1,3,2,4,-5,1,0}};
+		assertArrayEquals(new int[] {1,3,2,4,-5,1,0}, Basic.combine(arr3));
+		// combining a 2D array with one column should return an array of those elements
+		int[][] arr4 = new int[][] {new int[] {1}, new int[] {2}, new int[] {-1}, new int[] {1}};
+		assertArrayEquals(new int[] {1,2,-1,1}, Basic.combine(arr4));
+		// combining a 2D array of empty rows should also return the empty array
+		int[][] arr5 = new int[][] {new int[] {}, new int[] {}, new int[] {}, new int[] {}, new int[] {}};
+		assertArrayEquals(new int[] {}, Basic.combine(arr5));
+		// "regular" case
+		int[][] arr6 = new int[][] {new int[] {1,2,3}, new int[] {4,1,-1}, new int[] {5,1,2,4,-6}, new int[] {1,0}, new int[] {}};
+		assertArrayEquals(new int[] {1,2,3,4,1,-1,5,1,2,4,-6,1,0}, Basic.combine(arr6));
 	}
 }
