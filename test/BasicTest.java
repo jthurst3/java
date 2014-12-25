@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 // Package import
 import hassler.Basic;
@@ -88,5 +89,45 @@ public class BasicTest {
 		// "regular" case
 		int[][] arr6 = new int[][] {new int[] {1,2,3}, new int[] {4,1,-1}, new int[] {5,1,2,4,-6}, new int[] {1,0}, new int[] {}};
 		assertArrayEquals(new int[] {1,2,3,4,1,-1,5,1,2,4,-6,1,0}, Basic.combine(arr6));
+	}
+
+	/** pivot test */
+	public void test_pivot_empty() {
+		// test on an empty array
+		int[] arr = new int[] {};
+		Basic.pivot(arr, 0);
+	}
+	@Test
+	public void test_pivot_one() {
+		// test on an one element array
+		int[] arr = new int[] {5};
+		Basic.pivot(arr, 0);
+		assertArrayEquals(new int[] {5}, arr);
+	}
+	@Test
+	public void test_pivot_two() {
+		// test on an two element array
+		int[] arr = new int[] {3,1};
+		Basic.pivot(arr, 0);
+		assertArrayEquals(new int[] {1,3}, arr);
+
+		arr = new int[] {3,1};
+		Basic.pivot(arr, 1);
+		assertArrayEquals(new int[] {1,3}, arr);
+	}
+	@Test
+	public void test_pivot_three() {
+		// test on a 3-element array
+		int[] arr = new int[] {1,3,2};
+		Basic.pivot(arr, 0);
+		assertArrayEquals(new int[] {1,3,2}, arr);
+
+		arr = new int[] {1,3,2};
+		Basic.pivot(arr, 1);
+		assertArrayEquals(new int[] {2,1,3}, arr);
+
+		arr = new int[] {1,3,2};
+		Basic.pivot(arr, 2);
+		assertArrayEquals(new int[] {1,2,3}, arr);
 	}
 }
