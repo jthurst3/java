@@ -119,7 +119,7 @@ public class Sort {
 		int new_index = Basic.pivot(arr, pivot_index);
 		// recurse on left and right halves
 		int[] left = sort_quick(subarray(arr, 0, new_index));
-		int[] right = sort_quick(subarray(arr, new_index, arr.length));
+		int[] right = sort_quick(subarray(arr, new_index+1, arr.length));
 		return Basic.combine(new int[][] {left, new int[] {arr[new_index]}, right});
 	}
 	

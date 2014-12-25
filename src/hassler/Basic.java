@@ -43,6 +43,34 @@ public class Basic {
 		System.out.println(line.toString());
 	}
 	/**
+	 * Print array function
+	 * Prints the contents of an integer array
+	 * @param message An initial message to print before the array gets printed
+	 * @param arr The array of elements to print
+	 * @author J. Hassler Thurston
+	 */
+	public static void printarr(String message, int[] arr) {
+		// treat the empty array separately
+		if(arr.length == 0) {
+			println(message + ": []");
+			return;
+		}
+		print(message + ": [");
+		for (int i = 0; i < arr.length-1; i++) {
+			print(arr[i] + ", ");
+		}
+		println(arr[arr.length-1] + "]");
+	}
+	/**
+	 * Print array function
+	 * Prints the contents of an integer array, with initial message of "Array contents"
+	 * @param arr The array of elements to print
+	 * @author J. Hassler Thurston
+	 */
+	public static void printarr(int[] arr) {
+		printarr("Array contents", arr);
+	}
+	/**
 	 * Sum function
 	 * Returns the sum of an integer array
 	 * @author J. Hassler Thurston
@@ -131,10 +159,39 @@ public class Basic {
 	 * @return The index of the pivot element in the new array
 	 */
 	public static int pivot(int[] arr, int pivot_index) {
-		// swap the pivot element and the first element
+		// printarr(arr);
+		// throw an exception if the pivot_index is out of bounds
+		if (pivot_index < 0 || pivot_index >= arr.length) {
+			System.err.println("Pivot index " + pivot_index + " is out of bounds for an array of length " + arr.length + ".");
+			return -1;
+		}
+		// otherwise, swap the pivot element and the first element
 		swap(arr, 0, pivot_index);
-		// TODO: stub
-		return arr.length/2;
+		// printarr("After first swap", arr);
+		// keep two pointers, that each traverse through the list from left to right
+		// the first pointer will be the "swap pointer", which will be advanced
+		// only when we want to swap an element into its position
+		// the second pointer will be the "explore pointer", which will scout out elements
+		// to swap earlier
+		int swap_p = 1;
+		int explore_p = 1;
+		while(explore_p < arr.length) {
+			// see if we should swap elements between the pointers
+			if (arr[explore_p] <= arr[0]) {
+				// println("swapping indices " + swap_p + " " + explore_p);
+				swap(arr, swap_p++, explore_p++);
+				// printarr(arr);
+			}
+			// otherwise, just advance the explore pointer
+			else {
+				explore_p++;
+			}
+		}
+		// finally, swap the pivot element with the element just before the explore pointer
+		swap(arr, 0, swap_p - 1);
+		// printarr("After pivoting completed", arr);
+		// and the pivot element will now be at position swap_p
+		return swap_p - 1;
 	}
 
 	/**
