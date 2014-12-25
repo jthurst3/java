@@ -21,7 +21,7 @@
         <javac
             target="1.8" 
             srcdir="${src}" destdir="${builddir}"
-            includeAntRuntime="true"
+            includeAntRuntime="false"
             classpathref="lib.path.ref" debug="true">
             <include name="**/*.java" />
         </javac>
@@ -48,7 +48,7 @@
         <javac
             target="1.8" 
             srcdir="${testdir}" destdir="${testdir}"
-            includeAntRuntime="true"
+            includeAntRuntime="false"
             classpathref="lib.path.ref" debug="true">
             <include name="**/*.java" />
         </javac>
