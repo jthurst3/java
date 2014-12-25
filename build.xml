@@ -65,6 +65,7 @@
                 <pathelement location="${jarfile}" />
             </classpath>
 
+            <!-- from http://stackoverflow.com/questions/2791788/junit-ant-task-output-stack-trace -->
             <formatter type="plain" usefile="false" />
 
             <!-- <test name="BasicTest" haltonfailure="no" outfile="result">
