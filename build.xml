@@ -65,7 +65,7 @@
                 <pathelement location="${hamcrestjar}" />
             </classpath>
 
-            <formatter type="plain"/>
+            <formatter type="plain" usefile="false" />
 
             <!-- <test name="BasicTest" haltonfailure="no" outfile="result">
                 <formatter type="xml"/>
