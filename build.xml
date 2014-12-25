@@ -4,8 +4,7 @@
     <property name="builddir"      location="./bin" />
     <property name="docdir"      location="./doc" />
     <property name="src" location="./src" />
-    <property name="jardirectory" location="./lib" />
-    <property name="jarfile" value="hassler.jar" />
+    <property name="jarfile" value="./lib/hassler.jar" />
     <property name="testdir" value="./test" />
     <property name="testoutdir" value="./out" />
     <property name="junitjar" value="./lib/junit.jar" />
@@ -37,7 +36,7 @@
         <copy todir="${builddir}" preservelastmodified="true">
             <fileset dir="${src}" includes="*.properties" />
         </copy>
-        <jar destfile="${jardirectory}/${jarfile}">
+        <jar destfile="${jarfile}">
             <fileset dir="${builddir}" includes="**/*.class" />
             <fileset dir="${builddir}" includes="**/*.properties" />
         </jar>
@@ -63,6 +62,7 @@
                 <pathelement path="${src}"/>
                 <pathelement location="${junitjar}" />
                 <pathelement location="${hamcrestjar}" />
+                <pathelement location="${jarfile}" />
             </classpath>
 
             <formatter type="plain" usefile="false" />
