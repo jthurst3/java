@@ -8,6 +8,8 @@
 
 package hassler;
 
+import java.util.Random;
+
 public class Sort {
 
 	/**
@@ -18,7 +20,7 @@ public class Sort {
 	 * @return A sorted version of the array
 	 */
 	public static int[] sort(int[] arr) {
-		return sort_merge(arr);
+		return sort_quick(arr);
 	}
 	/**
 	 * Mergesort function
@@ -93,6 +95,32 @@ public class Sort {
 			return_arr[i-begin] = arr[i];
 		}
 		return return_arr;
+	}
+
+	/**
+	 * Quicksort function
+	 * Sorts an array of integers using the Quicksort algorithm
+	 * Pick a random pivot element
+	 * Put everything less than or equal to the pivot on the left, and
+	 * put everything greater than the pivot on the right
+	 * Recursively sort the left and the right half
+	 * @author J. Hassler Thurston
+	 */
+	public static int[] sort_quick(int[] arr) {
+		// base case: if the array has 0 or 1 elements, return it
+		if (arr.length <= 1) {
+			return arr;
+		}
+		// pick a random pivot element
+		Random rand = new Random();
+		int pivot_index = rand.nextInt(arr.length);
+		// put everything less than or equal to on the left
+		// and everything greater on the right
+		int new_index = Basic.pivot(arr, pivot_index);
+		// recurse on left and right halves
+		int[] left = sort_quick(subarray(arr, 0, new_index));
+		int[] right = sort_quick(subarray(arr, new_index, arr.length));
+		return Basic.combine(new int[][] {left, new int[] {arr[new_index]}, right});
 	}
 	
 }

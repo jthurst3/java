@@ -115,7 +115,7 @@ public class Basic {
 		int pivot_index = rand.nextInt(arr.length);
 		// put all the elements less than the pivot on the left,
 		// and all the elements greater than the pivot on the right
-		arr = pivot(arr, pivot_index);
+		int new_index = pivot(arr, pivot_index);
 		// finally, recurse on the correct half
 		// TODO: stub
 		return 0;
@@ -128,14 +128,13 @@ public class Basic {
 	 * @param arr The array to pivot
 	 * @param pivot_index The original index of the pivot element
 	 * @author J. Hassler Thurston
-	 * @return A new array with all elements less than the pivot on the left,
-	 * and all elements greater than the pivot on the right
+	 * @return The index of the pivot element in the new array
 	 */
-	private static int[] pivot(int[] arr, int pivot_index) {
+	public static int pivot(int[] arr, int pivot_index) {
 		// swap the pivot element and the first element
 		swap(arr, 0, pivot_index);
 		// TODO: stub
-		return arr;
+		return arr.length/2;
 	}
 
 	/**
@@ -150,6 +149,32 @@ public class Basic {
 		int c = arr[a];
 		arr[a] = arr[b];
 		arr[b] = c;
+	}
+
+	/**
+	 * Combine function
+	 * Combines a list of integer arrays into one long integer array
+	 * @param arrays The list of integer arrays to combine
+	 * @return A large int[] full of elements from the arrays
+	 * @author J. Hassler Thurston
+	 */
+	public static int[] combine(int[][] arrays) {
+		// find the lengths of the smaller arrays
+		int[] lengths = new int[arrays.length];
+		for (int i = 0; i < arrays.length; i++) {
+			lengths[i] = arrays[i].length;
+		}
+		// sum them up to get the length of the larger (overall) array
+		int[] result = new int[sum(lengths)];
+		// copy elements
+		int counter = 0;
+		for (int row = 0; row < arrays.length; row++) {
+			for (int col = 0; col < lengths[row]; col++) {
+				result[counter++] = arrays[row][col];
+			}
+		}
+		// return the resulting array
+		return result;
 	}
 
 
