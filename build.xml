@@ -8,6 +8,8 @@
     <property name="jarfile" value="hassler.jar" />
     <property name="testdir" value="./test" />
     <property name="testoutdir" value="./out" />
+    <property name="junitjar" value="./lib/junit.jar" />
+    <property name="hamcrestjar" value="./lib/hamcrest-core.jar" />
 
     <path id="lib.path.ref">
         <pathelement location="${builddir}" />
@@ -59,6 +61,8 @@
             <classpath>
                 <pathelement location="${testdir}"/>
                 <pathelement path="${src}"/>
+                <pathelement location="${junitjar}" />
+                <pathelement location="${hamcrestjar}" />
             </classpath>
 
             <formatter type="plain"/>
