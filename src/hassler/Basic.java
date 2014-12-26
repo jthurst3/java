@@ -21,7 +21,6 @@ public class Basic {
 		println("Hello, world!");
 	}
 
-
 	/**
 	 * Simple print function
 	 * Prints out a string of characters and returns.
@@ -32,6 +31,7 @@ public class Basic {
 	public static void print(Object line) {
 		System.out.print(line.toString());
 	}
+	public static void print() {}
 	/**
 	 * Simple print line function
 	 * Prints out a string of characters, followed by a newline.
@@ -41,6 +41,9 @@ public class Basic {
 	 */
 	public static void println(Object line) {
 		System.out.println(line.toString());
+	}
+	public static void println() {
+		println("");
 	}
 	/**
 	 * Print array function
