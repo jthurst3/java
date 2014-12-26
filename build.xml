@@ -74,7 +74,7 @@
 
             <batchtest fork="yes" todir="${testoutdir}">
                 <fileset dir="${testdir}">
-                <include name="**/*Test.java"/>
+                    <include name="**/*Test.java"/>
                     <exclude name="**/Tests.java"/>
                 </fileset>
             </batchtest>
