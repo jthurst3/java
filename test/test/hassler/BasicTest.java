@@ -6,7 +6,7 @@
  * December 24, 2014
  */
 
-// package test;
+package test.hassler;
 
 // JUnit imports
 import static org.junit.Assert.assertEquals;
