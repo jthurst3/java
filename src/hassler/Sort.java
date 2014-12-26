@@ -14,7 +14,7 @@ public class Sort {
 
 	/**
 	 * Sort function
-	 * Sorts an array of integers (currently using mergesort)
+	 * Sorts an array of integers (currently using quicksort)
 	 * @author J. Hassler Thurston
 	 * @param arr The array of elements
 	 * @return A sorted version of the array
@@ -104,6 +104,8 @@ public class Sort {
 	 * Put everything less than or equal to the pivot on the left, and
 	 * put everything greater than the pivot on the right
 	 * Recursively sort the left and the right half
+	 * @param arr The array to be sorted
+	 * @return A sorted version of the array, using Quicksort
 	 * @author J. Hassler Thurston
 	 */
 	public static int[] sort_quick(int[] arr) {
